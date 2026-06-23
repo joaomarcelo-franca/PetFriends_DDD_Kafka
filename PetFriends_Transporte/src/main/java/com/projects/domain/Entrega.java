@@ -10,6 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table
 public class Entrega {
 
     @Id
@@ -17,12 +18,13 @@ public class Entrega {
     private Long id;
 
     @Column(nullable = false)
-    private Long pedidoid;
+    private String pedidoid;
 
     @Embedded
     private Endereco endereco;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private StatusEntrega status;
 
     public void registrarSaida(){
@@ -37,7 +39,7 @@ public class Entrega {
         this.status=StatusEntrega.DEVOLVIDO;
     }
 
-    public Entrega(Long pedidoid, Endereco endereco) {
+    public Entrega(String pedidoid, Endereco endereco) {
         this.pedidoid = pedidoid;
         this.endereco = endereco;
     }

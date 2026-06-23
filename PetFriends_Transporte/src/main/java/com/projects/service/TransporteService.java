@@ -15,7 +15,7 @@ public class TransporteService {
 
     @Transactional
     public void processarEntrega(TransporteEmRotaEvent event) {
-        if (entregaRepository.existsByPedidoid(Long.parseLong(event.pedidoId()))) {
+        if (entregaRepository.existsByPedidoid(event.pedidoId())) {
             throw new RuntimeException("Já existe entrega para o pedido: " + event.pedidoId());
         }
 
@@ -28,7 +28,7 @@ public class TransporteService {
         );
 
         Entrega entrega = new Entrega(
-                Long.parseLong(event.pedidoId()),
+                event.pedidoId(),
                 endereco
         );
 

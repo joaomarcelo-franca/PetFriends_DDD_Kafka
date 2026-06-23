@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface EntregaRepository extends JpaRepository<Entrega, Long> {
 
-    Optional<Entrega> findByPedidoid(Long pedidoid);
-    boolean existsByPedidoid(Long pedidoid);
+    Optional<Entrega> findByPedidoid(String pedidoid);
+    boolean existsByPedidoid(String pedidoid);
 }

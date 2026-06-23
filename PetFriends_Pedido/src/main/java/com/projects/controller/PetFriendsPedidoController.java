@@ -16,13 +16,13 @@ public class PetFriendsPedidoController {
     private final PedidoService pedidoService;
 
     @PostMapping("/almoxarifado/{pedidoId}")
-    public ResponseEntity<String> almoxarifado(@PathVariable String pedidoId) {
+    public ResponseEntity<String> almoxarifado(@PathVariable("pedidoId") String pedidoId) {
         pedidoService.confirmarPreparacao(pedidoId);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/transporte/{pedidoId}")
-    public ResponseEntity<String> transporte(@PathVariable String pedidoId) {
+    public ResponseEntity<String> transporte(@PathVariable("pedidoId") String pedidoId) {
         pedidoService.despacharPedido(pedidoId);
         return ResponseEntity.ok().build();
     }

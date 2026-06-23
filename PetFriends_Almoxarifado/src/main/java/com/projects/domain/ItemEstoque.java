@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @Entity
+@Table
 public class ItemEstoque {
 
     @Id

@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table
 public class Pedido {
 
     @Id

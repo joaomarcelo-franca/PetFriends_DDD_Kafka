@@ -11,6 +11,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    defer-datasource-initialization: true
 
   datasource:
     url: jdbc:h2:mem:almoxarifado-db
@@ -22,13 +23,13 @@ spring:
     bootstrap-servers: localhost:9092
 
     consumer:
-      group-id: almoxarifado-group # Verificar isso
+      group-id: almoxarifado-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
       properties:
         spring.json.value.default.type: com.projects.events.PedidoEmPreparacaoEvent
-        spring.json.trusted.packages:  com.projects.events
+        spring.json.trusted.packages: com.projects.events
         spring.json.use.type.headers: false
 
 server:
